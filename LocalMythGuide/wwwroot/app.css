@@ -2,8 +2,19 @@
 
 html, body {
     font-family: 'Poppins', Helvetica, Arial, sans-serif;
-    background-color: #121619; /* Deep midnight background */
     color: #e0e6ed;
+    /* Animated Mystical Gradient */
+    background: linear-gradient(-45deg, #0a0d10, #1a232a, #0b1013, #161c21);
+    background-size: 400% 400%;
+    animation: mysticBreathe 18s ease infinite;
+    min-height: 100vh;
+}
+
+/* The keyframes that slowly shift the gradient */
+@keyframes mysticBreathe {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
 h1, h2, h3, h4, h5, h6, .navbar-brand {

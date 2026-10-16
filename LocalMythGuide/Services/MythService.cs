@@ -42,7 +42,7 @@ namespace LocalMythGuide.Services
                     ShortSummary = "Nature spirits that fiercely protect cascading turquoise waters.", 
                     FullStory = "Siquijor is widely known as an island of mysticism. The enchanting multi-tiered Cambugahay falls are said to be guarded by Engkantos (nature spirits). Locals believe that these spirits maintain the pristine turquoise color of the water, and disrespectful visitors might find themselves lost in the surrounding jungle or stricken with sudden ailments.", 
                     PracticalInfo = "Siquijor is accessible via ferry from neighboring islands. Always ask permission before swimming and avoid loud, disruptive noises.",
-                    ImageUrl = "https://images.unsplash.com/photo-1518331647614-7a1f04cd34cb?q=80&w=800&auto=format&fit=crop"
+                    ImageUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTK3gL2J0ZATxqxq7mhuiNHWIauRcG8O4HvTaqi8AoCG9op_SJvpBBsDUg&s=10"
                 },
                 new Myth { 
                     Id = 5, 
