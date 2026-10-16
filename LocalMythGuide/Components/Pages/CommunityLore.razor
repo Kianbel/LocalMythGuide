@@ -4,40 +4,51 @@
 
 <PageTitle>Community Lore</PageTitle>
 
-<h2>Submit a Local Legend</h2>
-<p>Know a ghost story or myth that tourists should hear about? Share it below!</p>
+<div class="container mt-4" style="max-width: 700px;">
+    <div class="text-center mb-4">
+        <h2 class="display-5">Contribute to the Archive</h2>
+        <p class="lead text-muted">Know a ghost story or myth that tourists should hear about? Leave it for future travelers.</p>
+    </div>
 
-@if (isSubmitted)
-{
-    <div class="alert alert-success">Thank you! Your legend has been submitted for review.</div>
-    <button class="btn btn-primary" @onclick="ResetForm">Submit Another</button>
-}
-else
-{
-    <EditForm Model="@submission" OnValidSubmit="HandleValidSubmit">
-        <DataAnnotationsValidator />
-
-        <div class="mb-3">
-            <label class="form-label">Legend Title</label>
-            <InputText class="form-control" @bind-Value="submission.Title" />
-            <ValidationMessage For="@(() => submission.Title)" />
+    @if (isSubmitted)
+    {
+        <div class="alert alert-success text-center" style="background-color: rgba(40, 167, 69, 0.2); border-color: #28a745; color: #e0e6ed;">
+            <h5>✨ Lore Accepted</h5>
+            <p>Thank you. Your legend has been etched into the archives for review.</p>
+            <button class="btn btn-primary mt-3" @onclick="ResetForm">Share Another Tale</button>
         </div>
+    }
+    else
+    {
+        <div class="card p-4 shadow-lg" style="background-color: #1f272d; border: 1px solid #2a343c; border-radius: 12px;">
+            <EditForm Model="@submission" OnValidSubmit="HandleValidSubmit">
+                <DataAnnotationsValidator />
+                
+                <div class="mb-4">
+                    <label class="form-label text-light">Title of the Legend</label>
+                    <InputText class="form-control bg-dark text-light border-secondary" @bind-Value="submission.Title" placeholder="e.g., The Kapre of the Old Mango Tree" />
+                    <ValidationMessage For="@(() => submission.Title)" />
+                </div>
 
-        <div class="mb-3">
-            <label class="form-label">Landmark / Location</label>
-            <InputText class="form-control" @bind-Value="submission.Location" />
-            <ValidationMessage For="@(() => submission.Location)" />
+                <div class="mb-4">
+                    <label class="form-label text-light">Landmark / Location</label>
+                    <InputText class="form-control bg-dark text-light border-secondary" @bind-Value="submission.Location" placeholder="Where did this happen?" />
+                    <ValidationMessage For="@(() => submission.Location)" />
+                </div>
+
+                <div class="mb-4">
+                    <label class="form-label text-light">The Story</label>
+                    <InputTextArea class="form-control bg-dark text-light border-secondary" @bind-Value="submission.Story" rows="6" placeholder="Recount the tale here..." />
+                    <ValidationMessage For="@(() => submission.Story)" />
+                </div>
+
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary btn-lg w-100">Seal the Record</button>
+                </div>
+            </EditForm>
         </div>
-
-        <div class="mb-3">
-            <label class="form-label">The Story</label>
-            <InputTextArea class="form-control" @bind-Value="submission.Story" rows="4" />
-            <ValidationMessage For="@(() => submission.Story)" />
-        </div>
-
-        <button type="submit" class="btn btn-success">Submit Lore</button>
-    </EditForm>
-}
+    }
+</div>
 
 @code {
     private LoreSubmission submission = new();
@@ -45,7 +56,6 @@ else
 
     private void HandleValidSubmit()
     {
-        // In a real app, you would save this to a database here
         isSubmitted = true;
     }
 
