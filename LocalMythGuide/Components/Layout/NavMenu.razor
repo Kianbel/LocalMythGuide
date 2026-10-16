@@ -1,23 +1,42 @@
-﻿<div class="top-row ps-3 navbar navbar-dark">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="">LocalMythGuide</a>
+﻿<nav class="navbar navbar-expand-md navbar-dark custom-top-nav shadow-sm">
+    <div class="container">
+        <a class="navbar-brand" href="">
+            ✨ LocalMythGuide
+        </a>
+        
+        <button class="navbar-toggler" type="button" @onclick="ToggleNavMenu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="@NavMenuCssClass navbar-collapse" @onclick="CollapseNavMenu">
+            <ul class="navbar-nav ms-auto mb-2 mb-md-0">
+                <li class="nav-item">
+                    <NavLink class="nav-link px-3" href="" Match="NavLinkMatch.All">
+                        Discovery Board
+                    </NavLink>
+                </li>
+                <li class="nav-item">
+                    <NavLink class="nav-link px-3" href="community">
+                        Community Lore
+                    </NavLink>
+                </li>
+            </ul>
+        </div>
     </div>
-</div>
+</nav>
 
-<input type="checkbox" title="Navigation menu" class="navbar-toggler" />
+@code {
+    private bool collapseNavMenu = true;
 
-<div class="nav-scrollable" onclick="document.querySelector('.navbar-toggler').click()">
-    <nav class="flex-column">
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
-                <span class="bi bi-house-door-fill-nav-menu" aria-hidden="true"></span> Discovery Board
-            </NavLink>
-        </div>
+    private string? NavMenuCssClass => collapseNavMenu ? "collapse" : null;
 
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="community">
-                <span class="bi bi-plus-square-fill-nav-menu" aria-hidden="true"></span> Community Lore
-            </NavLink>
-        </div>
-    </nav>
-</div>
+    private void ToggleNavMenu()
+    {
+        collapseNavMenu = !collapseNavMenu;
+    }
+
+    private void CollapseNavMenu()
+    {
+        collapseNavMenu = true;
+    }
+}
