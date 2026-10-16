@@ -1,7 +1,51 @@
 ﻿@page "/"
+@inject LocalMythGuide.Services.MythService MythService
+@inject NavigationManager NavigationManager
 
-<PageTitle>Home</PageTitle>
+<PageTitle>Discovery Board</PageTitle>
 
-<h1>Hello, world!</h1>
+<h1>Local Myth & Folklore Guide</h1>
+<p>Click a card to reveal the legend behind the landmark.</p>
 
-Welcome to your new app.
+<div class="card-grid">
+    @foreach (var myth in myths)
+    {
+        <div class="flip-card" @onclick="() => ToggleCard(myth.Id)">
+            <div class="flip-card-inner @(FlippedCards.Contains(myth.Id) ? "flipped" : "")">
+                <!-- Front of Card -->
+                <div class="flip-card-front">
+                    <h3>@myth.Title</h3>
+                    <p class="location-tag">📍 @myth.Location</p>
+                </div>
+                <!-- Back of Card -->
+                <div class="flip-card-back">
+                    <p>@myth.ShortSummary</p>
+                    <button class="btn btn-primary" @onclick="() => GoToDetails(myth.Id)" @onclick:stopPropagation="true">Read Full Story</button>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+@code {
+    private List<LocalMythGuide.Models.Myth> myths = new();
+    private HashSet<int> FlippedCards = new();
+
+    protected override void OnInitialized()
+    {
+        myths = MythService.GetMyths();
+    }
+
+    private void ToggleCard(int id)
+    {
+        if (FlippedCards.Contains(id))
+            FlippedCards.Remove(id);
+        else
+            FlippedCards.Add(id);
+    }
+
+    private void GoToDetails(int id)
+    {
+        NavigationManager.NavigateTo($"/story/{id}");
+    }
+}
