@@ -1,0 +1,56 @@
+@page "/community"
+@using LocalMythGuide.Models
+
+<PageTitle>Community Lore</PageTitle>
+
+<h2>Submit a Local Legend</h2>
+<p>Know a ghost story or myth that tourists should hear about? Share it below!</p>
+
+@if (isSubmitted)
+{
+    <div class="alert alert-success">Thank you! Your legend has been submitted for review.</div>
+    <button class="btn btn-primary" @onclick="ResetForm">Submit Another</button>
+}
+else
+{
+    <EditForm Model="@submission" OnValidSubmit="HandleValidSubmit">
+        <DataAnnotationsValidator />
+
+        <div class="mb-3">
+            <label class="form-label">Legend Title</label>
+            <InputText class="form-control" @bind-Value="submission.Title" />
+            <ValidationMessage For="@(() => submission.Title)" />
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Landmark / Location</label>
+            <InputText class="form-control" @bind-Value="submission.Location" />
+            <ValidationMessage For="@(() => submission.Location)" />
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">The Story</label>
+            <InputTextArea class="form-control" @bind-Value="submission.Story" rows="4" />
+            <ValidationMessage For="@(() => submission.Story)" />
+        </div>
+
+        <button type="submit" class="btn btn-success">Submit Lore</button>
+    </EditForm>
+}
+
+@code {
+    private LoreSubmission submission = new();
+    private bool isSubmitted = false;
+
+    private void HandleValidSubmit()
+    {
+        // In a real app, you would save this to a database here
+        isSubmitted = true;
+    }
+
+    private void ResetForm()
+    {
+        submission = new LoreSubmission();
+        isSubmitted = false;
+    }
+}
