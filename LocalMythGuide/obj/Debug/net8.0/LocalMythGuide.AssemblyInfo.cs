@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("LocalMythGuide")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1ae67439973d2154053febdcf90f7a50493dab5b")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+160c8d2ec3c17fd9b56f5d9630fea4f0f3d48f0a")]
 [assembly: System.Reflection.AssemblyProductAttribute("LocalMythGuide")]
 [assembly: System.Reflection.AssemblyTitleAttribute("LocalMythGuide")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
