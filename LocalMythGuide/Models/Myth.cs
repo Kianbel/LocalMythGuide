@@ -8,5 +8,6 @@ namespace LocalMythGuide.Models
         public string ShortSummary { get; set; } = string.Empty;
         public string FullStory { get; set; } = string.Empty;
         public string PracticalInfo { get; set; } = string.Empty;
+        public string ImageUrl { get; set; } = string.Empty; // <-- Add this line
     }
 }
