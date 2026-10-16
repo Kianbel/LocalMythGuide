@@ -128,3 +128,8 @@ h1:focus {
 .text-shadow {
     text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.9);
 }
+
+/* Mystical glow for the main hero title */
+.text-glow {
+    text-shadow: 0 0 20px rgba(248, 196, 113, 0.4);
+}
