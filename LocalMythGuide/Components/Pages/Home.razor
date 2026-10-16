@@ -14,8 +14,8 @@
         <div class="flip-card" @onclick="() => ToggleCard(myth.Id)">
             <div class="flip-card-inner @(FlippedCards.Contains(myth.Id) ? "flipped" : "")">
                 <!-- Front of Card -->
-                <div class="flip-card-front">
-                    <h3>@myth.Title</h3>
+                <div class="flip-card-front" style="background-image: linear-gradient(rgba(18, 22, 25, 0.4), rgba(18, 22, 25, 0.9)), url('@myth.ImageUrl'); background-size: cover; background-position: center;">
+                    <h3 class="text-shadow">@myth.Title</h3>
                     <p class="location-tag">📍 @myth.Location</p>
                 </div>
                 <!-- Back of Card -->
