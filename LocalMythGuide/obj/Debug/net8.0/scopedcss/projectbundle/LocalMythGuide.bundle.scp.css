@@ -30,9 +30,9 @@ main[b-f8yfc9d7se] {
 }
 /* _content/LocalMythGuide/Components/Layout/NavMenu.razor.rz.scp.css */
 .custom-top-nav[b-o6k5of6lo4] {
-    background-color: rgba(18, 22, 25, 0.95);
+    background-color: rgba(18, 22, 25, 0.7); /* Lowered opacity */
     border-bottom: 1px solid #2a343c;
-    backdrop-filter: blur(8px); /* Gives a modern frosted glass effect */
+    backdrop-filter: blur(12px); /* Increased blur for better frosting */
     padding: 1rem 0;
 }
 

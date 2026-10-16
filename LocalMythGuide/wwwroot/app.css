@@ -3,18 +3,15 @@
 html, body {
     font-family: 'Poppins', Helvetica, Arial, sans-serif;
     color: #e0e6ed;
-    /* Animated Mystical Gradient */
-    background: linear-gradient(-45deg, #0a0d10, #1a232a, #0b1013, #161c21);
-    background-size: 400% 400%;
-    animation: mysticBreathe 18s ease infinite;
+    
+    /* Mystical Image Background with Dark Overlay */
+    background-image: linear-gradient(rgba(10, 13, 16, 0.5), rgba(18, 22, 25, 0.95)), 
+                      url('https://images.unsplash.com/photo-1478760329108-5c3ed9d495a0?q=80&w=1920&auto=format&fit=crop');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Keeps the background still while scrolling */
+    background-repeat: no-repeat;
     min-height: 100vh;
-}
-
-/* The keyframes that slowly shift the gradient */
-@keyframes mysticBreathe {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
 }
 
 h1, h2, h3, h4, h5, h6, .navbar-brand {
