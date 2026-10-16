@@ -6,6 +6,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 
+// ---> INJECT YOUR SERVICE HERE <---
+builder.Services.AddSingleton<LocalMythGuide.Services.MythService>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
