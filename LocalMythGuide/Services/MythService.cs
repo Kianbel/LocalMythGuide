@@ -24,8 +24,20 @@ namespace LocalMythGuide.Services
 
         public async Task SubmitLoreAsync(LoreSubmission submission)
         {
-            await _supabase.From<LoreSubmission>().Insert(
-                submission,
+            var myth = new Myth
+            {
+                Title = submission.Title,
+                Location = submission.Location,
+                ShortSummary = submission.Story.Length > 100
+                    ? submission.Story.Substring(0, 100) + "..."
+                    : submission.Story,
+                FullStory = submission.Story,
+                PracticalInfo = "Community-submitted legend. Always respect local customs when visiting.",
+                ImageUrl = "https://images.unsplash.com/photo-1448375240586-882707db888b?q=80&w=800&auto=format&fit=crop"
+            };
+
+            await _supabase.From<Myth>().Insert(
+                myth,
                 new Supabase.Postgrest.QueryOptions
                 {
                     Returning = Supabase.Postgrest.QueryOptions.ReturnType.Minimal

@@ -6,7 +6,7 @@ namespace LocalMythGuide.Models
     [Table("myths")]
     public class Myth : BaseModel
     {
-        [PrimaryKey("id")]
+        [PrimaryKey("id", false)]
         public int Id { get; set; }
 
         [Column("title")]
