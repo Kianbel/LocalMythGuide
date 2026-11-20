@@ -6,8 +6,21 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 
-// ---> INJECT YOUR SERVICE HERE <---
-builder.Services.AddSingleton<LocalMythGuide.Services.MythService>();
+builder.Services.AddScoped(_ =>
+{
+    var url = builder.Configuration["Supabase:Url"]
+        ?? throw new InvalidOperationException("Supabase:Url is missing");
+    var key = builder.Configuration["Supabase:Key"]
+        ?? throw new InvalidOperationException("Supabase:Key is missing");
+
+    return new Supabase.Client(url, key, new Supabase.SupabaseOptions
+    {
+        AutoRefreshToken = false,
+        AutoConnectRealtime = false
+    });
+});
+
+builder.Services.AddScoped<LocalMythGuide.Services.MythService>();
 
 var app = builder.Build();
 

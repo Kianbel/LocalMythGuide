@@ -49,9 +49,9 @@
 
     private LocalMythGuide.Models.Myth? myth;
 
-    protected override void OnInitialized()
+    protected override async Task OnInitializedAsync()
     {
-        myth = MythService.GetMythById(Id);
+        myth = await MythService.GetMythByIdAsync(Id);
     }
 
     private void GoBack()

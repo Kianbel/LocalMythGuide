@@ -46,9 +46,9 @@
     private List<LocalMythGuide.Models.Myth> myths = new();
     private HashSet<int> FlippedCards = new();
 
-    protected override void OnInitialized()
+    protected override async Task OnInitializedAsync()
     {
-        myths = MythService.GetMyths();
+        myths = await MythService.GetMythsAsync();
     }
 
     private void ToggleCard(int id)

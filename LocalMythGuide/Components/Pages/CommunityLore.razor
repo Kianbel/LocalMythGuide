@@ -1,6 +1,7 @@
 @page "/community"
 @rendermode InteractiveServer
 @using LocalMythGuide.Models
+@inject LocalMythGuide.Services.MythService MythService
 
 <PageTitle>Community Lore</PageTitle>
 
@@ -54,8 +55,9 @@
     private LoreSubmission submission = new();
     private bool isSubmitted = false;
 
-    private void HandleValidSubmit()
+    private async Task HandleValidSubmit()
     {
+        await MythService.SubmitLoreAsync(submission);
         isSubmitted = true;
     }
 
